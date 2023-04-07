@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  minio:
+    image: docker.io/bitnami/minio:2023
+    ports:
+      - '9000:9000'
+      - '9001:9001'
+    volumes:
+      - 'minio_data:/data'
+    environment:
+      - MINIO_FORCE_NEW_KEYS=yes
+      - MINIO_ROOT_USER=minio-root-user
+      - MINIO_ROOT_PASSWORD=minio-root-password
+      - MINIO_SERVER_ACCESS_KEY=minio-access-key
+      - MINIO_SERVER_SECRET_KEY=minio-secret-key
+
+volumes:
+  minio_data:
